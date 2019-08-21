@@ -16,7 +16,8 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
-  FlatList
+  FlatList,
+  Platform
 } from 'react-native';
 import Modal from 'react-native-modal'
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -33,6 +34,8 @@ const data = [
   {todo: 'My job 8'},
   {todo: 'My job 9'}
 ]
+
+const isiOS = Platform.OS == 'ios'
 
 const App = () => {
   const [input, setInput] = useState('')
@@ -182,7 +185,7 @@ const styles = StyleSheet.create({
   appTitle: {
     textAlign: 'center',
     fontSize: 25,
-    padding: 40,
+    padding: 30,
     marginBottom: 15,
     backgroundColor: Colors.lighter
   },
@@ -202,7 +205,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    paddingVertical: 3
+    paddingVertical: isiOS ? 3 : 0
   },
   addItemButton: {
     flexDirection: 'row', 
